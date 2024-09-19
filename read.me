@@ -1,0 +1,53 @@
+step-1
+virtual enviroment 
+python -m venv enviromentname(myvenv)
+step -2
+active your enviroment
+myvenv\Scripts\activate
+step -3
+install django in system
+pip install Django
+
+step -4 create  project 
+Django-admin startproject projectname(myproject)
+//or
+Django-admin startproject projectname(myproject) .  (for avoiding nested folder)
+
+step-5  inside project we have to create app
+python manage.py startapp appname(myapp)
+step-6
+Activate for file in setting.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'myapp'  #application installed in django project
+]
+
+step -7
+include application url in django project urls.py file
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("",include('app.urls')), #application included in django project url
+]
+step -8
+create  one file in application and name it urls.py file.
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+  
+]
+
+
+
+Migrate django table
+python manage.py migrate    
+
+create super user  
+http://127.0.0.1:8000/admin -click this link then it will ask you for username and password
+than you have to create superuser
+python manage.py createsuperuser
